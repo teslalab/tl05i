@@ -2,7 +2,6 @@
 
 ![](/img/badge.PNG)
 ![](/img/badge2.jpeg)
-![](/img/GT000001.svg)
 
 Sensor de temperatura y Humedads diseñado por Ángel Isidro, diseñador de dispostivos electrónicos en el laboratorio de investigación y desarrollo Tesla Lab de Universidad Galileo.
 
@@ -10,47 +9,32 @@ Este dispositivo está basado en el sensor de temperatura SHT30 de la marca sens
 
 # ¿En donde puedo adquirir el sensor TL05i?
 
-Los primeros 100 participantes inscritos en el FIT obtuvieron su BADGE conmemorativo a los 10 años del evento.
+El sensor TL05i se encuentra disponible en Guatemala en la tienda de Electrónica Tettsa, para más información acerca de costos y existencias visite el siguiente [LINK][tienda.tettsa].
+
+[tienda.tettsa]: https://tienda.tettsa.gt/
 
 # ¿Cómo funciona?
 
-El Badge funciona por medio de un microcontrolador ESP32 el cual posee conectividad WiFi y BLE, podemos desplegar caracteres por medio de una matriz de Led de 8x8 por medio de conexión SPI, obtiene mediciones de temperatura, humedad y presión atmosférica por medio del sensor BME280, algunas de las aplicaciones puede incluir el uso del Giróscopio.
+El sensor TL05i funciona por medio del protocolo de comunicación I2C para cualquier dispositivo que soporte este protocolo de comunicación.
 
-# ¿Qué podemos hacer?
+# Dispositivos compatibles
 
-Enviar datos a un servidor web por medio de WiFi para lo cual necesitaremos conectividad WiFi y crear nuestro servidor Web, publicar datos ambientales en dashboards por medio de MQTT en plataformas como [adafruitIO][adafruit_io].
+A continuación detallamos un listado de tarjetas con las cuales ya fue probado el dispositivo TL05i y funciona correctamente.
 
-[adafruit_io]: https://io.adafruit.com
-Podemos usar la matriz para desplegar caracteres y mensajes, poseen entradas GPIO para conectar mas dispositivos con el ESP32. 
+- ESP32
+- ESP8266
+- Feather 32u4
 
-# Ejemplos con MicroPython 
-
-Para utilizar micropython con nuestro badge visite el siguiente repositorio para mayor información  [FunPython Ecuador][FPE].
-
-[FPE]: https://github.com/FunPythonEC/FIT_Guatemala_2019-SMART_BADGE
 
 # Descripción de pines 
 
-### Temperatura, humedad y presión atmosférica - Comunicación I2C
-ESP32 | BME280
+### Temperatura, humedad - Comunicación I2C
+TL05i | PIN
 --- | ---
-SCL 22 | SCK 4
-SDA 23 | SDI 3
-
-### Acelerómetro/Giróscopio - Comunicación I2C
-ESP32 | MMA8425QT
---- | ---
-SCL 22 | SCL 4
-SDA 23 | SDA 6
-
-### Matriz led 8x8 - Comunicación SPI
-ESP32 | MAX7219CWG
---- | ---
-5V | VCC 
+VCC | 3V3 - 5V
 GND | GND
-MOSI 16 | DIN 1
-CS 17 | CS 12
-SCK 21 | CLK 13
+SCL | Serial Clock
+SDA | Serial Data 
 
 # Licencia
 
