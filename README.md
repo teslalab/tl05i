@@ -1,6 +1,6 @@
 # TL05i Sensor de Temperatura / Humedad
 
-![](/img/tl05i.PNG)
+![](/img/tl05i.png)
 
 
 Sensor de temperatura y Humedads diseñado por Ángel Isidro, diseñador de dispostivos electrónicos en el laboratorio de investigación y desarrollo Tesla Lab de Universidad Galileo.
