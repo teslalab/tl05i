@@ -1,10 +1,12 @@
 /*************************************************** 
-Ejemplo para el uso del sensor TL05i creado por Angel Isidro - Tesla Lab
+Ejemplo para el uso del sensor TL05i por Angel Isidro - Tesla Lab Utilizando la libreria "Adafruit SHT31"
 El TL05i es un sensor de temperatura basado en el sensor SHT30 de la serie SHT3x 
 del fabricante SENSIRION.
 Este sensor funciona por el protocolo de comunicación I2C y su dirección I2C es 0x44
-Puede verificar el DataSheet en el siguiente LINK --> 
- ****************************************************/
+Puede verificar el DataSheet en el siguiente LINK -->
+ https://github.com/teslalab/tl05i/blob/main/Sensirion_Humidity_Sensors_SHT3x_Datasheet.pdf
+♥♥♥ Open source Hardaware / Software para todos ♥♥♥ 
+****************************************************/
  
 #include <Arduino.h>
 #include <Wire.h>
@@ -19,19 +21,18 @@ void setup() {
   Serial.begin(9600);
 
   while (!Serial)
-    delay(10);     // will pause Zero, Leonardo, etc until serial console opens
-
-  Serial.println("SHT31 test");
-  if (! sht31.begin(0x44)) {   // Set to 0x45 for alternate i2c addr
-    Serial.println("Couldn't find SHT31");
+    delay(10);     //Preparamos el Puerto serial 
+  Serial.println("TL05i test");
+  if (! sht31.begin(0x44)) {   // Si la dirección I2C esta ocupada verique el DataSheet para el uso de la dirección alternativa 0x45
+    Serial.println("No se puede encontrar el TL05i");
     while (1) delay(1);
   }
 
-  Serial.print("Heater Enabled State: ");
+  Serial.print("EStadi de activación del calentador: ");
   if (sht31.isHeaterEnabled())
-    Serial.println("ENABLED");
+    Serial.println("Habilitado");
   else
-    Serial.println("DISABLED");
+    Serial.println("Deshabilitado");
 }
 
 
@@ -39,16 +40,16 @@ void loop() {
   float t = sht31.readTemperature();
   float h = sht31.readHumidity();
 
-  if (! isnan(t)) {  // check if 'is not a number'
+  if (! isnan(t)) {  // Revisamos si esto no es un número
     Serial.print("Temp *C = "); Serial.print(t); Serial.print("\t\t");
   } else { 
-    Serial.println("Failed to read temperature");
+    Serial.println("No se puede leer la Temperatura");
   }
   
-  if (! isnan(h)) {  // check if 'is not a number'
+  if (! isnan(h)) {  // Revisamos si esto no es un número
     Serial.print("Hum. % = "); Serial.println(h);
   } else { 
-    Serial.println("Failed to read humidity");
+    Serial.println("No se puede leer la Humedad");
   }
 
   delay(1000);
